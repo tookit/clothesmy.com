@@ -1,0 +1,33 @@
+body {
+    background: #f7f7f7;
+}
+
+
+.tt-breadcrumb {
+    padding: 15px 0;
+    background: #fff;
+}
+
+.tt-logo img {
+
+    max-height: 30px;
+}
+
+footer .tt-logo img {
+    max-height: 25px;
+}
+
+.tt-menu-categories .tt-dropdown-toggle {
+    min-width: 250px;
+}
+
+.tt-product:not(.tt-view) .tt-image-box {
+
+    border: 1px solid #f7f8f9;
+}
+
+
+.swiper-container {
+    max-height: 550px;
+}
+
