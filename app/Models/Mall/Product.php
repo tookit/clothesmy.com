@@ -35,7 +35,7 @@ class Product extends Model
 
     protected $fillable = [
 
-        'name','description','body', 'applications','features','specs','ordering','reference_url','featured_img', 'meta_title','meta_keywords', 'meta_description'
+        'name','description','body', 'applications','features','specs','ordering','reference_url','ali_url','amazon_url','featured_img', 'meta_title','meta_keywords', 'meta_description'
     ];
 
     protected $hidden = ['pivot'];
@@ -133,6 +133,15 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class,'product_has_categories');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function props()
+    {
+        return $this->belongsToMany(PropertyValue::class,'product_has_properties');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

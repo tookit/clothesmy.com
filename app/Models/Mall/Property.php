@@ -13,7 +13,7 @@ class Property extends Model
 
     protected $fillable = [
 
-        'name','description'
+        'value'
     ];
 
 
@@ -24,26 +24,10 @@ class Property extends Model
 
     protected $casts = [
 
-        'name' => 'json',
-        'description' => 'json',
     ];
 
 
-    public $translatable = [
 
-        'name',
-        'description'
-
-    ];
-
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function products()
-    {
-        return $this->belongsToMany(Product::class,'product_has_properties');
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

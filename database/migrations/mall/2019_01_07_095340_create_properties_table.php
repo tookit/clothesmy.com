@@ -25,11 +25,20 @@ class CreatePropertiesTable extends Migration
             $table->timestamps();
         });
 
+        Schema::create('property_values', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('property_id');
+            $table->char('sku',34)->unique();
+            $table->string('value')->unique()->comment('the value of properties');
+            $table->integer('created_by')->unsigned()->default(0);
+            $table->integer('updated_by')->unsigned()->default(0);
+            $table->timestamps();
+        });
+
         Schema::create('product_has_properties', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id');
-            $table->integer('property_id');
-            $table->json('values')->comment('property values');
+            $table->integer('property_value_id');
             $table->timestamps();
         });
 

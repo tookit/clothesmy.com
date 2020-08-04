@@ -36,6 +36,9 @@ class CreateProductsTable extends Migration
             $table->tinyInteger('flag')->unsigned()->default(0)->comment('1:hot|2:featrued|3:Home page');
             $table->string('featured_img')->nullable()->comment('Featured Image');
             $table->string('reference_url')->nullable();
+            $table->string('ali_url')->nullable();
+            $table->string('amazon_url')->nullable();
+            $table->string('shopee_url')->nullable();
             $table->boolean('is_active')->default(false);
             $table->boolean('is_home')->default(false);
             $table->integer('created_by')->unsigned()->default(0);

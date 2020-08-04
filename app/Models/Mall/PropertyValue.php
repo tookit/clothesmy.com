@@ -9,12 +9,12 @@ class PropertyValue extends Model
 
 
 
-    protected $table = 'product_attribute_values';
+    protected $table = 'property_values';
 
 
     protected $fillable = [
 
-        'name','description'
+        'value'
     ];
 
 
@@ -24,16 +24,11 @@ class PropertyValue extends Model
 
 
     protected $casts = [
-
-        'name' => 'json',
         'description' => 'json',
     ];
 
 
     public $translatable = [
-
-        'name',
-        'description'
 
     ];
 
@@ -44,6 +39,6 @@ class PropertyValue extends Model
      */
     public function property()
     {
-        return $this->belongsTo(Property::clas);
+        return $this->belongsTo(Property::class);
     }
 }
