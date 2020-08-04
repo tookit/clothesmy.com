@@ -34,6 +34,6 @@ class Property extends Model
      */
     public function values()
     {
-        return $this->hasMany(ProductAttributeValue::class);
+        return $this->hasMany(PropertyValue::class);
     }
 }

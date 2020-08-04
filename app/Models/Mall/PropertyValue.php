@@ -3,11 +3,12 @@
 namespace App\Models\Mall;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasUuid;
 
 class PropertyValue extends Model
 {
 
-
+    use HasUuid;
 
     protected $table = 'property_values';
 
@@ -24,7 +25,6 @@ class PropertyValue extends Model
 
 
     protected $casts = [
-        'description' => 'json',
     ];
 
 

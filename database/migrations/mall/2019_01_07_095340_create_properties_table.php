@@ -28,7 +28,7 @@ class CreatePropertiesTable extends Migration
         Schema::create('property_values', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('property_id');
-            $table->char('sku',34)->unique();
+            $table->char('sku',36)->unique();
             $table->string('value')->unique()->comment('the value of properties');
             $table->integer('created_by')->unsigned()->default(0);
             $table->integer('updated_by')->unsigned()->default(0);
