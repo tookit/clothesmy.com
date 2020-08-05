@@ -13,7 +13,7 @@ class Property extends Model
 
     protected $fillable = [
 
-        'value'
+        'name','type','slug'
     ];
 
 
@@ -26,7 +26,8 @@ class Property extends Model
 
     ];
 
-
+    public static  $allowedFilters = ['name'];
+    public static  $allowedSorts = [];
 
 
     /**

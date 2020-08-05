@@ -105,7 +105,7 @@ Route::middleware(['auth:api'])->group(function () {
     // Mall
     Route::prefix('mall')->group(function (){
 
-        //category
+        //quote
         Route::get('quote',['uses'=>'Mall\QuoteController@index','desc'=>'List quotes'])->name('quote.index');
         Route::post('quote',['uses'=>'Mall\QuoteController@store','desc'=>'Create quote'])->name('quote.create');
         Route::get('quote/{id}',['uses'=>'Mall\QuoteController@show','desc'=>'View quote detail'])->where('id', '[0-9]+')->name('quote.view');
@@ -131,6 +131,12 @@ Route::middleware(['auth:api'])->group(function () {
         Route::post('item/{id}/media',['uses'=>'Mall\ProductController@attachMedia','desc'=>'Attach media for product'])->where('id', '[0-9]+')->name('product.media.attach');
         Route::post('item/{id}/meta',['uses'=>'Mall\ProductController@attachMeta','desc'=>'Attach meta for product'])->where('id', '[0-9]+')->name('product.meta.attach');
 
+        //property
+        Route::get('property',['uses'=>'Mall\PropertyController@index','desc'=>'List property'])->name('property.index');
+        Route::post('property',['uses'=>'Mall\PropertyController@store','desc'=>'Create property'])->name('property.create');
+        Route::get('property/{id}',['uses'=>'Mall\PropertyController@show','desc'=>'View property detail'])->where('id', '[0-9]+')->name('property.view');
+        Route::put('property/{id}',['uses'=>'Mall\PropertyController@update','desc'=>'Update property'])->where('id', '[0-9]+')->name('property.edit');
+        Route::delete('property/{id}',['uses'=>'Mall\PropertyController@destroy','desc'=>'Delete property'])->where('id', '[0-9]+')->name('property.delete');
 
     });
 
