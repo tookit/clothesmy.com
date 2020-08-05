@@ -3,8 +3,6 @@
 namespace App\Models\Mall;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravel\Scout\Searchable;
 use Michaelwang\Nestedset\NodeTrait;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -90,7 +88,15 @@ class Category extends Model
      */
     public function products()
     {
-        return $this->belongsToMany(Product::class,'product_has_categories');
+        return $this->belongsToMany(Product::class,'product_has_categories','product_category_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function props()
+    {
+        return $this->belongsToMany(Property::class,'category_has_properties');
     }
 
     /**

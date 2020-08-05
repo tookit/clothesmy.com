@@ -22,6 +22,7 @@ class CreateCmsSlider extends Migration
             $table->integer('updated_by')->unsigned()->default(0);
             $table->boolean('is_active')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

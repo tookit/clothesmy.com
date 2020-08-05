@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api\Acl;
 
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
 
 use App\Models\User as Model;
 use App\Http\Resources\Acl\UserResource as Resource;

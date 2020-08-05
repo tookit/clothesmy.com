@@ -25,9 +25,9 @@ class UsersTableSeeder extends Seeder
                 'gender' => 'male'
             ]
         );        
-        if(Config::get('app.env') !== 'production'){
-            
-            factory(User::class,25)->create();
-        }
+//        if(Config::get('app.env') !== 'production'){
+//
+//            factory(User::class,25)->create();
+//        }
     }
 }

@@ -89,6 +89,7 @@
                     <h1 class="tt-title">Fiber Cable Assemblies</h1>
                 </div>
                 <div class="tt-tab-wrapper">
+                    @if($fiber)
                     <ul class="nav nav-tabs tt-tabs-default" role="tablist">
                         @foreach ($fiber->children->take(4) as $item)
                             <li class="nav-item">
@@ -117,6 +118,7 @@
                         </div>
                         @endforeach
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
