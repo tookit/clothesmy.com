@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Mall\Category;
+use App\Models\Mall\Property;
 use Illuminate\Console\Command;
 use App\Models\Mall\Product;
 use Illuminate\Support\Facades\File;
@@ -55,7 +57,10 @@ class SyncProduct extends Command
                 # code...
                 $this->syncCategories();
                 break;
-
+            case 'prop':
+                # code...
+                $this->syncProps();
+                break;
             default:
                 # code...
                 break;
@@ -102,6 +107,13 @@ class SyncProduct extends Command
             $this->info(sprintf('%s meta synced.',$item->name));
         });
 
+    }
+
+    public function syncProps()
+    {
+        Property::all()->each(function($item){
+            $cat = Category::find(2)->attachProp($item);
+        });
     }
 
 }

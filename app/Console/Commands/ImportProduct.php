@@ -41,7 +41,14 @@ class ImportProduct extends Command
      */
     public function handle()
     {
-        $file = $this->argument('file');
+//        $file = $this->argument('file');
+//        $row = 1;
+//        if (($handle = fopen(storage_path($file), "r")) !== FALSE) {
+//            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+//                dd($data);
+//            }
+//            fclose($handle);
+//        }
 
 
 

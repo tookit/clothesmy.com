@@ -82,13 +82,24 @@ class Category extends Model
             ->saveSlugsTo('slug');
     }
 
+    /**
+     * @param array|\ArrayAccess|\App\Models\Mall\Property $prop
+     *
+     * @return $this
+     */
+    public function attachProp($prop)
+    {
+        $instance = (is_array($prop)) ? Property::firstOrNew($prop) : $prop;
+        $this->props()->syncWithoutDetaching([$instance->id]);
+        return $this;
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function products()
     {
-        return $this->belongsToMany(Product::class,'product_has_categories','product_category_id');
+        return $this->belongsToMany(Product::class,'product_has_categories','product_id','product_category_id');
     }
 
     /**

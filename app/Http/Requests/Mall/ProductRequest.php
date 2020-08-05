@@ -30,12 +30,12 @@ class ProductRequest extends FormRequest
     public function createRule()
     {
         return [
-            'name' => ['required|unique:mall_products,name,'.$this->id],
-            'description'=>['sometimes'],
+            'name' => ['required','unique:mall_products,name,'.$this->id],
+            'description'=>['string'],
             'is_active' => ['boolean','nullable'],
             'is_home' => ['boolean','nullable'],
-            'specs'=>['sometimes'],
-            'packaging'=>['sometimes'],
+            'specs'=>['string'],
+            'packaging'=>['string'],
             'meta_title' => ['string', 'max:255'],
             'meta_keywords' => ['string', 'max:255'],
             'meta_description' => ['string', 'max:255']
@@ -45,9 +45,9 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => ['unique:mall_products,name,'.$this->id],
-            'description'=>['sometimes'],
-            'specs'=>['sometimes'],
-            'packaging'=>['sometimes'],
+            'description'=>['string'],
+            'specs'=>['string'],
+            'packaging'=>['string'],
             'meta_title' => ['string', 'max:255'],
             'meta_keywords' => ['string', 'max:255'],
             'meta_description' => ['string', 'max:255']
