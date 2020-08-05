@@ -19,7 +19,7 @@ class CreatePropertiesTable extends Migration
             $table->string('slug')->unique();
             $table->string('type')->default('text');
             $table->string('unit')->default('');
-            $table->json('options')->comment('duplicate for property_values');
+            $table->json('options')->nullable()->comment('duplicate for property_values');
             $table->integer('created_by')->unsigned()->default(0);
             $table->integer('updated_by')->unsigned()->default(0);
             $table->timestamps();

@@ -3,10 +3,13 @@
 namespace App\Models\Mall;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Property extends Model
 {
 
+    use HasSlug;
 
     protected $table = 'properties';
 
@@ -29,6 +32,18 @@ class Property extends Model
     public static  $allowedFilters = ['name'];
     public static  $allowedSorts = [];
 
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
+
+
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -36,5 +51,28 @@ class Property extends Model
     public function values()
     {
         return $this->hasMany(PropertyValue::class);
+    }
+
+
+    /**
+     * @param array|\ArrayAccess|\App\Models\Mall\PropertyValue $values
+     *
+     * @return $this
+     */
+    public function attachValues($values)
+    {
+        $value = (PropertyValue::updateOrCreate($values));
+        $this->values()->save($value);
+        return $this;
+    }
+
+    /**
+     * @param string|\App\Models\Mall\PropertyValue $value
+     *
+     * @return $this
+     */
+    public function attachValue($value)
+    {
+        return $this->attachValues(['value' =>$value]);
     }
 }

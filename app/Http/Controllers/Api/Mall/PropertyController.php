@@ -22,6 +22,7 @@ class PropertyController extends Controller
     {
         $builder = QueryBuilder::for(Model::class)
             ->withCount(['values'])
+            ->with(['values'])
             ->allowedFilters(Model::$allowedFilters)
             ->allowedSorts(Model::$allowedSorts);
         return Resource::collection(
@@ -65,7 +66,7 @@ class PropertyController extends Controller
      */
     public function show($id)
     {
-        $item = Model::with(['ancestors','media'])->findOrFail($id);
+        $item = Model::with(['values'])->findOrFail($id);
         return new Resource($item);
     }
 
