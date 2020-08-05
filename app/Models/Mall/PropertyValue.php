@@ -32,6 +32,9 @@ class PropertyValue extends Model
 
     ];
 
+    public static  $allowedFilters = ['value'];
+    public static  $allowedSorts = [];
+
 
 
     /**

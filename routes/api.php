@@ -135,8 +135,16 @@ Route::middleware(['auth:api'])->group(function () {
         Route::get('property',['uses'=>'Mall\PropertyController@index','desc'=>'List property'])->name('property.index');
         Route::post('property',['uses'=>'Mall\PropertyController@store','desc'=>'Create property'])->name('property.create');
         Route::get('property/{id}',['uses'=>'Mall\PropertyController@show','desc'=>'View property detail'])->where('id', '[0-9]+')->name('property.view');
+        Route::get('property/{id}/value',['uses'=>'Mall\PropertyController@listValues','desc'=>'View property values'])->where('id', '[0-9]+')->name('property.value.view');
         Route::put('property/{id}',['uses'=>'Mall\PropertyController@update','desc'=>'Update property'])->where('id', '[0-9]+')->name('property.edit');
-        Route::delete('property/{id}',['uses'=>'Mall\PropertyController@destroy','desc'=>'Delete property'])->where('id', '[0-9]+')->name('property.delete');
+        Route::put('property/{id}/value',['uses'=>'Mall\PropertyController@attachValue','desc'=>'Attach value for property'])->where('id', '[0-9]+')->name('property.value.attach');
+        Route::delete('property/{id}',['uses'=>'Mall\PropertyController@destroy','desc'=>'Delete property'])->where('id', '[0-9]+')->name('property.delete');       //property
+        //property value
+        Route::get('property_value',['uses'=>'Mall\PropertyValueController@index','desc'=>'List property value'])->name('property_value.index');
+        Route::post('property_value',['uses'=>'Mall\PropertyValueController@store','desc'=>'Create property value'])->name('property_value.create');
+        Route::get('property_value/{id}',['uses'=>'Mall\PropertyValueController@show','desc'=>'View property value'])->where('id', '[0-9]+')->name('property_value.view');
+        Route::put('property_value/{id}',['uses'=>'Mall\PropertyValueController@update','desc'=>'Update property value'])->where('id', '[0-9]+')->name('property_value.edit');
+        Route::delete('property_value/{id}',['uses'=>'Mall\PropertyValueController@destroy','desc'=>'Delete property value'])->where('id', '[0-9]+')->name('property_value.delete');
 
     });
 
