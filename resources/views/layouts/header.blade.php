@@ -76,7 +76,7 @@
             <div class="row">
                 <div class="tt-logo-container">
                     <!-- mobile logo -->
-                    <a class="tt-logo tt-logo-alignment" href="/"><img src="{{asset('/images/logo/logo.png')}}" alt="The Optical Fiber"></a>
+                    <a class="tt-logo tt-logo-alignment" href="/"><img src="{{asset('/images/logo/logo_text.png')}}" alt="Clothes My">Clothes My</a>
                     <!-- /mobile logo -->
                 </div>
             </div>
@@ -88,7 +88,8 @@
             <div class="tt-header-holder">
                 <div class="tt-col-obj tt-obj-logo">
                     <!-- logo -->
-                    <a class="tt-logo tt-logo-alignment" href="/"><img src="{{asset('/images/logo/logo.png')}}" alt="The Optical Fiber"></a>
+                    <a class="tt-logo tt-logo-alignment" href="/"><img src="{{asset('/images/logo/logo_text.png')}}" alt="Clothes My">
+                    </a>
                     <!-- /logo -->
                 </div>
                 <div class="tt-col-obj tt-obj-search-type2">
