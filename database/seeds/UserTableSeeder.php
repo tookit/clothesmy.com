@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Config;
 use App\Models\User;
 
-class UsersTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
-        // seed admin 
+        // seed admin
         User::updateOrCreate(
             [
                 'username' => Config::get('admin.username'),
@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
                 'active'=>1,
                 'gender' => 'male'
             ]
-        );        
+        );
 //        if(Config::get('app.env') !== 'production'){
 //
 //            factory(User::class,25)->create();

@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Mall\Product;
 use Illuminate\Support\Facades\File;
+use Michaelwang\Mediable\MediaUploaderFacade as MediaUploader;
+use Box\Spout\Reader\Common\Creator\ReaderEntityFactory;
 
 class ImportProduct extends Command
 {
@@ -41,14 +43,41 @@ class ImportProduct extends Command
      */
     public function handle()
     {
-//        $file = $this->argument('file');
-//        $row = 1;
-//        if (($handle = fopen(storage_path($file), "r")) !== FALSE) {
-//            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-//                dd($data);
-//            }
-//            fclose($handle);
-//        }
+       $file = $this->argument('file');
+       $reader = ReaderEntityFactory::createReaderFromFile(storage_path($file));
+       $reader->open(storage_path($file));
+       foreach ($reader->getSheetIterator() as $sheet) {
+           foreach ($sheet->getRowIterator() as $index => $row) {
+               // do stuff with the row
+               $cells = $row->getCells();
+               if($index > 2) {
+                    $imageIndex = [3,4,5,6,7,8];
+                    $id = $cells[0]->getValue();
+                    $catId = $cells[1]->getValue();
+                    $name = $cells[2]->getValue();
+                    $item = Product::updateOrCreate(['name'=>$name],[
+                        'id' => $id,
+                        'name' => $name,
+                        'description' => $name
+                    ]);
+                    $dir = 'clothes/'.$item->id;
+                    foreach($imageIndex as $key)
+                    {
+                        $img = $cells[$key]->getValue();
+                        if(!empty($img)){
+                            $media = MediaUploader::fromSource($img)
+                            ->toDestination('public',$dir)
+                            ->useHashForFilename()
+                            ->upload();;
+                            $item->attachMedia($media,'clothes');
+                        }
+                    }
+
+               }
+           }
+       }
+
+       $reader->close();
 
 
 

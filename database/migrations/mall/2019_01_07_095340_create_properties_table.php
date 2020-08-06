@@ -65,5 +65,6 @@ class CreatePropertiesTable extends Migration
         Schema::dropIfExists('properties');
         Schema::dropIfExists('product_has_properties');
         Schema::dropIfExists('category_has_properties');
+        Schema::dropIfExists('property_values');
     }
 }

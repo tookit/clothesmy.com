@@ -37,7 +37,7 @@ class CreateProductCategoriesTable extends Migration
         Schema::create('product_has_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id');
-            $table->integer('product_category_id');
+            $table->integer('category_id');
             $table->timestamps();
         });
     }

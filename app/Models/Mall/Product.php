@@ -16,7 +16,7 @@ class Product extends Model
 
     use HasSlug,
         HasTags,
-        Searchable,
+        // Searchable,
         Metable,
         Mediable,
         AuditableTrait;
