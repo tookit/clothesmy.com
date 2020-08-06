@@ -11,7 +11,7 @@ class HomeController
     public function index(){
 
         $categories = Category::where(['parent_id'=>null])->get();
-        $fiber = Category::with(['children','children.products'])->find(2110);
+        $fiber = Category::with(['children','children.products'])->find(1);
         $slider = Slider::visible();
         return view('home.index',[
             'categories' => $categories,

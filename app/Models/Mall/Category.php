@@ -99,7 +99,7 @@ class Category extends Model
      */
     public function products()
     {
-        return $this->belongsToMany(Product::class,'product_has_categories','product_id','product_category_id');
+        return $this->belongsToMany(Product::class,'product_has_categories');
     }
 
     /**

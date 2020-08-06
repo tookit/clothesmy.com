@@ -86,7 +86,7 @@
         <div class="container-indent1">
             <div class="container container-fluid-custom-mobile-padding">
                 <div class="tt-block-title text-left">
-                    <h1 class="tt-title">Fiber Cable Assemblies</h1>
+                    <h1 class="tt-title">{{$fiber->name}}</h1>
                 </div>
                 <div class="tt-tab-wrapper">
                     @if($fiber)
