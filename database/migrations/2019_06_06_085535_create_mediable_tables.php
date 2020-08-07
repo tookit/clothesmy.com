@@ -22,6 +22,8 @@ class CreateMediableTables extends Migration
             $table->string('mime_type', 128);
             $table->string('aggregate_type', 32);
             $table->integer('size')->unsigned();
+            $table->string('cloud_url',512)->nullable();
+            $table->json('custom_properties')->nullable();
             $table->timestamps();
 
             $table->index(['disk', 'directory']);

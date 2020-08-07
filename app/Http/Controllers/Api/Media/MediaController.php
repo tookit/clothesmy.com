@@ -12,6 +12,7 @@ use Michaelwang\Mediable\MediaUploaderFacade as MediaUploader;
 use App\Models\Media\Media as Model;
 use Illuminate\Support\Facades\DB;
 use Spatie\QueryBuilder\AllowedFilter;
+use Michaelwang\Mediable\SourceAdapters\SourceAdapterInterface;
 class MediaController extends Controller
 {
 
@@ -55,6 +56,9 @@ class MediaController extends Controller
         $media = MediaUploader::fromSource($request->file('file'))
         ->toDestination('oss',$dir)
         ->useHashForFilename()
+        ->beforeSave(function (Model $model, SourceAdapterInterface $source) {
+            $model->setAttribute('cloud_url', $model->getUrl());
+        })
         ->upload();
         return
         (new Resource($media))
@@ -85,7 +89,10 @@ class MediaController extends Controller
      */
     public function update(MediaPropRequest $request, $id)
     {
-        $item = Model::updateOrCreate(['id'=>$id],$request->validated());
+        $item =  $item = Model::findOrFail($id);
+        $item->custom_properties = $request->get('custom_properties');
+        // $item->setAttribute('custom_properties', $request->get('custom_properties'));
+        $item->save();
         return (new Resource($item))
                 ->additional(['meta' => [
                     'message' => 'Media updated',

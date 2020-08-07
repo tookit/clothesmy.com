@@ -4,9 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Mall\Product;
-use Illuminate\Support\Facades\File;
-use App\Models\Mediable\Media;
-use App\Models\Media\Media as PlankMedia;
+use App\Models\Media\Media;
+use Exception;
 
 class SyncImage extends Command
 {
@@ -44,51 +43,20 @@ class SyncImage extends Command
     public function handle()
     {
         Media::all()->each(function($item){
-            // $path = pathinfo(($item->getPath()));
-            // $data = [
-            //     'id'=> $item->id,
-            //     'disk' => 'oss',
-            //     'directory' => $path['dirname'],
-            //     'filename' => $path['filename'],
-            //     'extension' => $path['extension'],
-            //     'mime_type' => $item->mime_type,
-            //     'size' => $item->size,
-            //     'uuid'=>$item->uuid,
-            //     'aggregate_type' => 'image/jpg'
-
-            // ];
-            $plank = PlankMedia::find($item->id);
-            $product = Product::find($item->model_id);
-            $product->attachMedia($plank,'fiber');
-        });
-
-    }
-
-    public function syncFiber() {
-        Product::all()->each(function ($item) {
-            $files = $this->getFiles($item->getKey());
-            if (count($files) > 0) {
-                // attach images
-                collect($files)->each(function ($file) use($item) {
-                    $item->copyMedia($file->getPathname())
-                        ->withCustomProperties(['title' => $item->name])
-                        ->toMediaCollection('fiber', 'oss');
-                    $item->is_active = 1;
+            if($item->disk === 'oss') {
+                try {
+                    $item->getUrl();
+                    $item->cloud_url = $item->getUrl();
                     $item->save();
-//                    $this->info(sprintf('item %s image uploaded'), [$item->getKey()]);
-                });
+                }catch(Exception $e) {
+                    var_dump($item);
+                    dd($e);
 
+                }
 
             }
         });
-
+        $this->info('Proudct image synced');
     }
 
-    public function getFiles($id)
-    {
-
-        $path = storage_path('product/' . $id);
-        return (file_exists($path)) ? File::files($path) : [];
-
-    }
 }

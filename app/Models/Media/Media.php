@@ -5,13 +5,15 @@ namespace App\Models\Media;
 use App\Models\CMS\Slider;
 use App\Models\Mall\Product;
 use App\Traits\HasUuid;
+use App\Traits\HasCloud;
 
 use Michaelwang\Mediable\Media as Base;
 
 class Media extends Base
 {
 
-    use HasUuid;
+    use HasCloud,
+        HasUuid;
 
     protected $table = 'medias';
 
@@ -19,7 +21,7 @@ class Media extends Base
     public static  $allowedFilters = [];
     public static  $allowedSorts = [];
     protected $fillable = [
-
+        'custom_properties'
     ];
 
 
@@ -29,22 +31,15 @@ class Media extends Base
 
 
     protected $casts = [
-        'attached' => 'boolean'
+        'attached' => 'boolean',
+        'custom_properties' => 'array'
     ];
 
-    public $appends = [
 
-        'url'
-    ];
 
     public  function scopeOrder($query)
     {
         return $query->orderBy('created_at','desc');
-    }
-
-    public function getUrlAttribute(): string
-    {
-        return url($this->getUrl());
     }
 
     public function getProcessImage($width = 'w_200', $height = 'h_200'): string
