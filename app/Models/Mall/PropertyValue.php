@@ -23,7 +23,7 @@ class PropertyValue extends Model
 
     ];
 
-
+    protected $hidden = ['pivot'];
     protected $casts = [
     ];
 
@@ -36,9 +36,23 @@ class PropertyValue extends Model
     public static  $allowedSorts = [];
 
 
-    public function getPropertyKeyAttribute()
-    {
+    public $appends = [
 
+        'property_name',
+        'property_slug'
+
+    ];
+
+
+
+    public function getPropertyNameAttribute()
+    {
+        return $this->property ? $this->property->name : null;
+    }
+
+    public function getPropertySlugAttribute()
+    {
+        return $this->property ? $this->property->slug : null;
     }
 
     /**

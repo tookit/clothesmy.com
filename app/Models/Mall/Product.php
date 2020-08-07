@@ -93,7 +93,7 @@ class Product extends Model
     }
 
     /**
-     * @param array|\ArrayAccess|\App\Models\Mall\Property $prop
+     * @param array|\ArrayAccess|\App\Models\Mall\PropertyValue $prop
      *
      * @return $this
      */

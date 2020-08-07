@@ -24,6 +24,7 @@ class Property extends Model
 
     ];
 
+    protected $hidden = ['pivot'];
 
     protected $casts = [
 

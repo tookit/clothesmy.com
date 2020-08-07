@@ -75,7 +75,7 @@ class ProductController extends Controller
     {
         $item = Model::with(['categories'=>function($query){
              return $query->withDepth()->orderBy('depth');
-        },'media', 'meta','tags'])->findOrFail($id);
+        },'media', 'meta','tags', 'props','props.property'])->findOrFail($id);
         return new Resource($item);
     }
 
@@ -123,12 +123,12 @@ class ProductController extends Controller
         foreach($request->all() as $slug => $values) {
             $prop = Property::where(['slug'=>$slug])->first();
             if($prop) {
-                $item->attachProp($prop);
+                $item->props()->syncWithoutDetaching($values);
             }
         }
         return (new Resource($item))
             ->additional(['meta' => [
-                'message' => 'Media attached',
+                'message' => 'Props attached',
             ]]);
         ;
     }
