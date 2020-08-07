@@ -30,8 +30,8 @@
                         <div class="tt-product-single-img">
                             <div>
                                 <button class="tt-btn-zomm tt-top-right"><i class="icon-f-86"></i></button>
-                                @if ($item->hasMedia('fiber'))
-                                    <img class="zoom-product" src="{{ $item->firstMedia('fiber')->getProcessImage('w_480','h_600')}}" data-zoom-image="{{$item->getFirstImageUrl()}}" alt="{{$item->name}}">
+                                @if ($item->hasMedia('clothes'))
+                                    <img class="zoom-product" src="{{ $item->firstMedia('clothes')->getProcessImage('w_480','h_600')}}" data-zoom-image="{{$item->getFirstImageUrl()}}" alt="{{$item->name}}">
                                 @else
                                     <img class="zoom-product" src="{{asset('/images/product/product-01.jpg') }}" data-zoom-image="{{asset('/images/product/product-01.jpg') }}" alt="{{$item->name}}">
                                 @endif
@@ -41,7 +41,7 @@
                             <ul id="smallGallery" class="tt-slick-button-vertical  slick-animated-show-js">
                                 @if ($item->media)
                                     @foreach ($item->media as $media)
-                                        <li><a href="#" data-image="{{$media->getProcessImage('w_80','h_100')}}" data-zoom-image="{{$media->getUrl()}}"><img src="{{$media->getProcessImage('w_80','h_100')}}" alt=""></a></li>
+                                        <li><a href="#" data-image="{{$media->getProcessImage('w_480','h_600')}}" data-zoom-image="{{$media->getUrl()}}"><img src="{{$media->getProcessImage('w_80','h_100')}}" alt=""></a></li>
                                     @endforeach
                                 @else
                                     <li><a href="#" data-image="{{'assets/images/product/product-01.jpg'|theme }}" data-zoom-image="{{'assets/images/product/product-01.jpg'|theme }}"><img src="{{'assets/images/product/product-01.jpg'|theme }}" alt=""></a></li>

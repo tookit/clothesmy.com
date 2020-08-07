@@ -168,7 +168,6 @@ echo Assets::js('external')
         }, 'google_translate_element');
     }
 </script>
-<script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="4314339a-f19c-4c71-b27b-b3bae5a38e5d";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </body>
 

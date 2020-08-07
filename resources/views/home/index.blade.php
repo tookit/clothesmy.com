@@ -73,7 +73,7 @@
                             <div class="tt-description">
                                 <div class="tt-description-wrapper">
                                     <div class="tt-background"></div>
-                                    {{--<div class="tt-title-small">Fiber</div>--}}
+                                    <!-- {{--<div class="tt-title-small">Fiber</div>--}} -->
                                     <div class="tt-title-large">FTTH Drop Cable</div>
                                 </div>
                             </div>
@@ -154,7 +154,6 @@
             </div>
         </div>
 
-        <!-- 3 col products
         <div class="container-indent">
             <div class="container">
                 <div class="row">
@@ -392,7 +391,7 @@
                 </div>
             </div>
         </div>
-        -->
+
         <!-- brand
         <div class="container-indent">
             <div class="container container-fluid-custom-mobile-padding">

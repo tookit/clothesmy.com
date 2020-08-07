@@ -27,12 +27,15 @@ class PropertySeeder extends Seeder
             ],
             [
                 'name' => 'decoration',
-                'category' => 'Cartoon Dress',
                 'option' => ['appliques','beading','bow','criss-cross','crystal','draped']
             ],
             [
                 'name' => 'Pattern Type',
                 'option' => ['animal','cartoon','DOT','floral','patchwork','plaid','print']
+            ],
+            [
+                'name' => 'Material',
+                'option' => ['cotton','linen','nylon','polyester','rayon','wool','acetate','acrylic','silk','microfiber','cashmere']
             ]
         ];
         collect($props)->each(function ($item){

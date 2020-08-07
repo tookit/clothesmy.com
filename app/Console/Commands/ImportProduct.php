@@ -54,24 +54,26 @@ class ImportProduct extends Command
                     $imageIndex = [3,4,5,6,7,8];
                     $id = $cells[0]->getValue();
                     $catId = $cells[1]->getValue();
+                    dd($catId);
+
                     $name = $cells[2]->getValue();
                     $item = Product::updateOrCreate(['name'=>$name],[
-                        'id' => $id,
+                        'custom_id' => $id,
                         'name' => $name,
                         'description' => $name
                     ]);
-                    $dir = 'clothes/'.$item->id;
-                    foreach($imageIndex as $key)
-                    {
-                        $img = $cells[$key]->getValue();
-                        if(!empty($img)){
-                            $media = MediaUploader::fromSource($img)
-                            ->toDestination('public',$dir)
-                            ->useHashForFilename()
-                            ->upload();;
-                            $item->attachMedia($media,'clothes');
-                        }
-                    }
+                    // $dir = 'clothes/'.$item->id;
+                    // foreach($imageIndex as $key)
+                    // {
+                    //     $img = $cells[$key]->getValue();
+                    //     if(!empty($img)){
+                    //         $media = MediaUploader::fromSource($img)
+                    //         ->toDestination('public',$dir)
+                    //         ->useHashForFilename()
+                    //         ->upload();;
+                    //         $item->attachMedia($media,'clothes');
+                    //     }
+                    // }
 
                }
            }

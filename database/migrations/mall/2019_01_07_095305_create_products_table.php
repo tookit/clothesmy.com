@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('slug')->unique();
             $table->string('name')->unique()->comment('Product name');
+            $table->integer('custom_id')->unique()->comment('custom id');
             $table->text('meta_title')->nullable();
             $table->text('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();

@@ -22,6 +22,8 @@ class Product extends Model
         AuditableTrait;
 
 
+    const COLLECTION = 'clothes';
+
     public static  $allowedFilters = ['name','categories.name','description','is_active'];
     public static  $allowedSorts = [];
 
@@ -35,7 +37,7 @@ class Product extends Model
 
     protected $fillable = [
 
-        'name','description','body', 'applications','features','specs','ordering','reference_url','ali_url','amazon_url','featured_img', 'meta_title','meta_keywords', 'meta_description'
+        'custom_id','name','description','body', 'applications','features','specs','ordering','reference_url','ali_url','amazon_url','featured_img', 'meta_title','meta_keywords', 'meta_description'
     ];
 
     protected $hidden = ['pivot'];
@@ -134,7 +136,7 @@ class Product extends Model
     }
 
     public function getFirstImageUrl() {
-        return $this->firstMedia('fiber') ? $this->firstMedia('fiber')->getUrl().'?x-oss-process=image/auto-orient,1/quality,q_90/watermark,text_S2FtZSBUZWNobm9sb2d5,color_a6a0a0,size_22,g_center,t_42,x_10,y_10' : '';
+        return $this->firstMedia(self::COLLECTION) ? $this->firstMedia(self::COLLECTION)->getUrl().'?x-oss-process=image/auto-orient,1/quality,q_90/watermark,text_S2FtZSBUZWNobm9sb2d5,color_a6a0a0,size_22,g_center,t_42,x_10,y_10' : '';
     }
 
     /**
