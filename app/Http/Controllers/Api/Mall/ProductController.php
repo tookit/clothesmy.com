@@ -12,6 +12,7 @@ use App\Http\Resources\Mall\ProductResource as Resource;
 use App\Http\Requests\Mall\ProductRequest as ValidateRequest;
 use App\Http\Requests\MediaAttachRequest;
 use App\Http\Requests\Meta\MetaRequest;
+use App\Models\Mall\Property;
 use App\Models\Media\Media;
 use Spatie\QueryBuilder\AllowedFilter;
 
@@ -25,7 +26,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $builder = QueryBuilder::for(Model::class)
-            ->with(['media','categories'=>function($query){
+            ->with(['media','props','props.property','categories'=>function($query){
                 return $query->withDepth()->orderBy('depth');
             }])
             ->allowedFilters([
@@ -117,6 +118,20 @@ class ProductController extends Controller
         ;
     }
 
+    public function attachProps($id,Request $request){
+        $item = Model::findOrFail($id);
+        foreach($request->all() as $slug => $values) {
+            $prop = Property::where(['slug'=>$slug])->first();
+            if($prop) {
+                $item->attachProp($prop);
+            }
+        }
+        return (new Resource($item))
+            ->additional(['meta' => [
+                'message' => 'Media attached',
+            ]]);
+        ;
+    }
 
 
     public function attachMedia($id,MediaAttachRequest $request){

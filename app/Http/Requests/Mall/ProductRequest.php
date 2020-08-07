@@ -34,6 +34,7 @@ class ProductRequest extends FormRequest
             'description'=>['string'],
             'is_active' => ['boolean','nullable'],
             'is_home' => ['boolean','nullable'],
+            'ali_url' => ['url', 'nullable'],
             'specs'=>['string'],
             'packaging'=>['string'],
             'meta_title' => ['string', 'max:255'],
@@ -46,6 +47,7 @@ class ProductRequest extends FormRequest
         return [
             'name' => ['unique:mall_products,name,'.$this->id],
             'description'=>['string'],
+            'ali_url' => ['url', 'nullable'],
             'specs'=>['string'],
             'packaging'=>['string'],
             'meta_title' => ['string', 'max:255'],

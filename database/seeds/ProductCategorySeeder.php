@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Config;
 use App\Models\Mall\Category;
 
-class ProductsCategorySeeder extends Seeder
+class ProductCategorySeeder extends Seeder
 {
 
 
@@ -39,6 +38,9 @@ class ProductsCategorySeeder extends Seeder
                     'name' => 'Aurora',
                 ],
                 [
+                    'name' => 'Rapunzel',
+                ],
+                [
                     'name' => 'Sofia',
                 ],
                 [
@@ -52,6 +54,7 @@ class ProductsCategorySeeder extends Seeder
                 ],
             ],
         ];
+        Category::create($categories);
 
     }
 }

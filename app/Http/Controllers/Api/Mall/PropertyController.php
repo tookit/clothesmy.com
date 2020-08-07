@@ -31,7 +31,7 @@ class PropertyController extends Controller
                 ?
                 $builder->paginate($request->get('pageSize'),['*'],'page')
                 :
-                $builder->get()->toTree()
+                $builder->get()
 
         );
     }

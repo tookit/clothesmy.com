@@ -36,6 +36,10 @@ class PropertyValue extends Model
     public static  $allowedSorts = [];
 
 
+    public function getPropertyKeyAttribute()
+    {
+
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
