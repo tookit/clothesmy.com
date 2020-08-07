@@ -99,6 +99,9 @@ Route::middleware(['auth:api'])->group(function () {
         Route::get('slider/{id}/image',['uses'=>'CMS\SliderController@listImage','desc'=>'List images for slider'])->where('id', '[0-9]+')->name('slider.image.list');
         Route::post('slider/{id}/image',['uses'=>'CMS\SliderController@attachImage','desc'=>'Attach image for slider'])->where('id', '[0-9]+')->name('slider.image.attach');
 
+        //setting
+        Route::get('setting',['uses'=>'CMS\SettingController@index','desc'=>'List setting'])->name('setting.index');
+        Route::post('setting',['uses'=>'CMS\SettingController@store','desc'=>'Update setting'])->name('setting.update');
 
     });
 
