@@ -32,7 +32,7 @@ class Product extends Model
 
     static $flags = [
 
-        'hot','promoted','archived'
+        'hot','promoted','new','archived'
     ];
 
     protected $fillable = [

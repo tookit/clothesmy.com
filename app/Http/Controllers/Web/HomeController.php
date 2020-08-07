@@ -13,10 +13,12 @@ class HomeController
         $categories = Category::where(['parent_id'=>null])->get();
         $fiber = Category::with(['children','children.products'])->find(1);
         $slider = Slider::visible();
+        $promotes = Category::featured()->get();
         return view('home.index',[
             'categories' => $categories,
             'fiber' => $fiber,
             'sliders'=>$slider,
+            'promotes' => $promotes,
             'meta' => [
                 'title' =>'',
                 'keywords' =>'',

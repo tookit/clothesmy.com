@@ -24,42 +24,41 @@
         </div>
     </div>
     <div id="tt-pageContent">
+        @if($promotes->count() > 3)
         <div class="container-indent0">
             <div class="container">
                 <div class="row flex-sm-row-reverse tt-layout-promo-box">
                     <div class="col-sm-12 col-md-6">
                         <div class="row">
                             <div class="col-sm-6">
-                                <a href="/product/item/3x-lc-quad-12-fibers-os2-single-mode-fhx-splice-cassette-pre-loaded-color-coded-pigtail
-" class="tt-promo-box tt-one-child hover-type-2">
-                                    <img src="{{asset('/images/loader.svg')}}" data-src="https://optic-fiber.oss-cn-beijing.aliyuncs.com/home/280_240.png" alt="">
+                                <a href="{{$promotes[0]->href}}" class="tt-promo-box tt-one-child hover-type-2">
+                                    <img src="{{asset('/images/loader.svg')}}" data-src="{{$promotes[0]->getProcessImage('w_280','h_240')}}" alt="{{$promotes[0]->name}}">
                                     <div class="tt-description">
                                         <div class="tt-description-wrapper">
                                             <div class="tt-background"></div>
-                                            <div class="tt-title-small">FHX Splice Cassette</div>
+                                            <div class="tt-title-small">{{$promotes[0]->name}}</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-sm-6">
-                                <a href="http://www.theopticalfiber.com/product/item/8ch-dwdm-mux-demux-single-fiber-expansion-port-c21-c35
-" class="tt-promo-box tt-one-child hover-type-2">
-                                    <img src="{{asset('/images/loader.svg')}}" data-src="https://optic-fiber.oss-cn-beijing.aliyuncs.com/home/280_240_trunk_cable.png" alt="">
+                                <a href="{{$promotes[1]->href}}" class="tt-promo-box tt-one-child hover-type-2">
+                                    <img src="{{asset('/images/loader.svg')}}" data-src="{{$promotes[1]->getProcessImage('w_280','h_240')}}" alt="{{$promotes[1]->name}}">
                                     <div class="tt-description">
                                         <div class="tt-description-wrapper">
                                             <div class="tt-background"></div>
-                                            <div class="tt-title-small">DWDM Mux Demux</div>
+                                            <div class="tt-title-small">{{$promotes[1]->name}}</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-sm-12">
-                                <a href="http://www.theopticalfiber.com/product/item/1x16-plc-fiber-splitter-1u-19-rack-mount-scapc-singlemode" class="tt-promo-box tt-one-child">
-                                    <img src="{{asset('/images/loader.svg')}}" data-src="https://optic-fiber.oss-cn-beijing.aliyuncs.com/home/580_240.png" alt="">
+                                <a href="{{$promotes[2]->href}}" class="tt-promo-box tt-one-child">
+                                    <img src="{{asset('/images/loader.svg')}}" data-src="{{$promotes[1]->getProcessImage('w_580','h_240')}}" alt="{{$promotes[2]->name}}">
                                     <div class="tt-description">
                                         <div class="tt-description-wrapper">
                                             <div class="tt-background"></div>
-                                            <div class="tt-title-small">PLC Fiber Splitter</div>
+                                            <div class="tt-title-small">{{$promotes[2]->name}}</div>
                                         </div>
                                     </div>
                                 </a>
@@ -67,14 +66,12 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
-                        <a href="/product/item/singlemode-9125-os2-frp-strength-member-lszh-self-supporting-ftth-drop-cable-gjyxfch-1-fiber
-" class="tt-promo-box">
-                            <img src="{{asset('/images/loader.svg')}}" data-src="https://optic-fiber.oss-cn-beijing.aliyuncs.com/home/580_500_fiber.png" alt="">
+                        <a href="{{$promotes[3]->href}}" class="tt-promo-box">
+                            <img src="{{asset('/images/loader.svg')}}" data-src="{{$promotes[3]->getProcessImage('w_580','h_500')}}" alt="{{$promotes[3]->name}}">
                             <div class="tt-description">
                                 <div class="tt-description-wrapper">
                                     <div class="tt-background"></div>
-                                    <!-- {{--<div class="tt-title-small">Fiber</div>--}} -->
-                                    <div class="tt-title-large">FTTH Drop Cable</div>
+                                    <div class="tt-title-large">{{$promotes[3]->name}}</div>
                                 </div>
                             </div>
                         </a>
@@ -82,7 +79,7 @@
                 </div>
             </div>
         </div>
-
+        @endif
         <div class="container-indent1">
             <div class="container container-fluid-custom-mobile-padding">
                 <div class="tt-block-title text-left">

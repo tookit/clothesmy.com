@@ -23,7 +23,7 @@ class Category extends Model
 
     protected $fillable = [
 
-        'name','description','is_active', 'is_home', 'meta_title', 'meta_keywords', 'meta_description','parent_id','featured_img'
+        'name','description','is_active', 'is_home', 'meta_title', 'meta_keywords', 'meta_description','parent_id','featured_img','flag'
     ];
 
 
@@ -50,10 +50,37 @@ class Category extends Model
 
     ];
 
+
+
     public function getHrefAttribute()
     {
         return url("/product/category/{$this->slug}");
     }
+
+     /**
+     * Scope a query to only include users of a given type.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  mixed  $type
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfType($query, $type)
+    {
+        return $query->where('flag', $type);
+    }
+
+    /**
+     * Scope a query to only include users of a given type.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  mixed  $type
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFeatured($query)
+    {
+        return $query->whereNotNull('featured_img');
+    }
+
 
 
     public function getProcessImage($width = 'w_200', $height = 'h_200'): string

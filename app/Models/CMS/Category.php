@@ -15,9 +15,12 @@ class Category extends Model
         // HasMediaTrait,
         AuditableTrait;
     protected $table = 'categories';
+
+    const PROMOTE = ['male','female','other'];
+
     protected $fillable = [
 
-        'name','slug', 'description', 'parent_id','meta_title'
+        'name','slug', 'description', 'parent_id','meta_title','flag'
     ];
 
     protected $hidden = ['pivot'];
@@ -62,6 +65,17 @@ class Category extends Model
             ->saveSlugsTo('slug');
     }
 
+    /**
+     * Scope a query to only include users of a given type.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  mixed  $type
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfType($query, $type)
+    {
+        return $query->where('flag', $type);
+    }
 
     public function posts()
     {
