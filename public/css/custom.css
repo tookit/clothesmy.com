@@ -48,7 +48,12 @@ footer .tt-logo img {
 /* color option */
 
 ul.tt-options-swatch li a:not(.options-color):not(.options-color-img) {
-    background-color: #e9e7e7 !important;
+    background-color: #e9e7e7 ;
+}
+
+ul.tt-options-swatch li.active a:not(.options-color):not(.options-color-img), ul.tt-options-swatch li:hover a:not(.options-color):not(.options-color-img) {
+    background: #2879fe;
+    color: #fff;
 }
 
 .tt-color-black { background-color: black;}
@@ -77,9 +82,11 @@ ul.tt-options-swatch li a:not(.options-color):not(.options-color-img) {
     background-size: 1.25em;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-
 }
 
+.btn-ali {
+    background-color: red !important;
+}
 /* bootstrap table */
 .table {
 	width: 100%;

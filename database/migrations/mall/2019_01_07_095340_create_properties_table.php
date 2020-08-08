@@ -28,7 +28,7 @@ class CreatePropertiesTable extends Migration
         Schema::create('property_values', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('property_id');
-            $table->char('sku',36)->unique();
+            $table->char('uuid',36)->unique();
             $table->string('value')->unique()->comment('the value of properties');
             $table->integer('created_by')->unsigned()->default(0);
             $table->integer('updated_by')->unsigned()->default(0);
@@ -39,6 +39,17 @@ class CreatePropertiesTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('property_value_id');
+            $table->enum('type',['sku','spu']);
+            $table->timestamps();
+        });
+
+        Schema::create('product_specs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->char('sku',36)->unique();
+            $table->integer('product_id');
+            $table->json('specs')->comment('{color: "white", size: "2T"}');
+            $table->integer('price')->default(0);
+            $table->integer('stock')->default(0);
             $table->timestamps();
         });
 

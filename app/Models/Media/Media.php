@@ -21,7 +21,7 @@ class Media extends Base
     public static  $allowedFilters = [];
     public static  $allowedSorts = [];
     protected $fillable = [
-        'custom_properties'
+        'custom_properties','color'
     ];
 
 

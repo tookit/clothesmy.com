@@ -94,8 +94,12 @@
                                     </div>
                                 </div>
                                 <div class="col-item">
+                                    <a href="{{$item->ali_url}}" target="_blank"  class="btn btn-lg btn-ali" ><i class="icon-f-47"></i>Buy  AliExpress</a>
+                                </div>
+                                <div class="col-item">
                                     <a href="#" data-toggle="modal" data-target="#ModalQuote" class="btn btn-lg" data-pid="{{$item->id}}"><i class="icon-f-39"></i>Quote</a>
                                 </div>
+
                             </div>
                         </div>
                         <div class="tt-wrapper">

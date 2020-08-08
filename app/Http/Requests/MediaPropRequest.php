@@ -25,6 +25,7 @@ class MediaPropRequest extends FormRequest
     {
         return [
             'filename' => ['string'],
+            'color' => ['String'],
             'custom_properties' =>['required']
         ];
     }

@@ -91,6 +91,9 @@ class MediaController extends Controller
     {
         $item =  $item = Model::findOrFail($id);
         $item->custom_properties = $request->get('custom_properties');
+        if($request->get('color')) {
+            $item->color = $request->get('color');
+        }
         // $item->setAttribute('custom_properties', $request->get('custom_properties'));
         $item->save();
         return (new Resource($item))

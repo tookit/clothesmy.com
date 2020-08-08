@@ -37,7 +37,7 @@ class Product extends Model
 
     protected $fillable = [
 
-        'custom_id','name','description','body', 'applications','features','specs','ordering','reference_url','ali_url','amazon_url','featured_img', 'meta_title','meta_keywords', 'meta_description'
+        'custom_id','name','description','body', 'applications','features','specs','ordering','reference_url','ali_url','amazon_url','featured_img', 'flag', 'meta_title','meta_keywords', 'meta_description'
     ];
 
     protected $hidden = ['pivot'];
@@ -168,6 +168,15 @@ class Product extends Model
     {
         return $this->hasMany(Quote::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function specs()
+    {
+        return $this->hasMany(Spec::class);
+    }
+
 
     public function getCategoriesWithSelf()
     {
