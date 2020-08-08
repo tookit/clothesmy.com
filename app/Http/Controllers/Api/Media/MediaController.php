@@ -27,8 +27,8 @@ class MediaController extends Controller
     {
 
         $builder = QueryBuilder::for(Model::order())
-        ->with(['product','slider'])
-        ->withCount(['product','slider'])
+        ->with(['products'])
+        ->withCount(['products'])
         ->allowedFilters([
             AllowedFilter::exact('filename'),
             AllowedFilter::exact('directory')

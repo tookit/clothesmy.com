@@ -51,7 +51,7 @@ class Media extends Base
         return url($this->getUrl()).$query;
     }
 
-    public function product()
+    public function products()
     {
         return $this->morphedByMany(Product::class, 'mediable');
     }
