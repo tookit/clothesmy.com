@@ -53,7 +53,7 @@
                 <div class="col-6">
                     <div class="tt-product-single-info">
 
-                        <h1 class="tt-title">{{$item->name}}</h1>
+                        <h3 class="tt-item-title">{{$item->name}}</h3>
                         <div class="tt-price">
                         </div>
                         <div class="tt-review">
@@ -66,24 +66,24 @@
                             </div>
                             <a class="product-page-gotocomments-js" href="#">(1 Customer Review)</a>
                         </div>
-                        <div class="tt-wrapper">
-                        {!! $item->description !!}
+                        @if($item->props()->get()->count() > 0)
+                        <div class="tt-wrapper product-variable">
+                            <div for="size">Size : </div>
+                            <ul class="tt-options-swatch options-middle">
+                                @foreach($item->props()->get()->where('property_slug','size') as $option)
+                                    <li><a href="#">{{$option->value}}</a></li>
+                                @endforeach
+                            </ul>
                         </div>
                         <div class="tt-wrapper">
-                            <div class="tt-countdown_box_02">
-                                <div class="tt-countdown_inner">
-                                    <div class="tt-countdown"
-                                         data-date="2018-11-01"
-                                         data-year="Yrs"
-                                         data-month="Mths"
-                                         data-week="Wk"
-                                         data-day="Day"
-                                         data-hour="Hrs"
-                                         data-minute="Min"
-                                         data-second="Sec"></div>
-                                </div>
-                            </div>
+                            <div for="color">Color : </div>
+                            <ul class="tt-options-swatch options-middle">
+                                @foreach($item->props()->get()->where('property_slug','color') as $option)
+                                    <li><a class="options-color tt-border tt-color-{{$option->value}}" href="#">{{$option->value}}</a></li>
+                                @endforeach
+                            </ul>
                         </div>
+                        @endif
                         <div class="tt-wrapper">
                             <div class="tt-row-custom-01">
                                 <div class="col-item">

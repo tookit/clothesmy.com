@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Http\Resources\MediaResource;
 use App\Models\Mall\Property as Model;
+use App\Models\Mall\PropertyValue;
 use App\Http\Resources\Mall\PropertyResource as Resource;
 use App\Http\Requests\Mall\PropertyRequest as ValidateRequest;
 use App\Http\Requests\Mall\ImageRequest as ImageRequest;
@@ -53,7 +54,7 @@ class PropertyController extends Controller
     {
         return (new Resource(Model::create($request->validated())))
                 ->additional(['meta' => [
-                    'message' => 'Product category created.',
+                    'message' => 'Property created.',
                 ]]);
         ;
 
@@ -110,7 +111,7 @@ class PropertyController extends Controller
         $item = Model::updateOrCreate(['id'=>$id],$request->validated());
         return (new Resource($item))
             ->additional(['meta' => [
-                'message' => 'Product category updated',
+                'message' => 'Property updated',
             ]]);
         ;
     }
@@ -127,22 +128,9 @@ class PropertyController extends Controller
         $item->delete();
         return (new Resource($item))
             ->additional(['meta' => [
-                'message' => 'Product category deleted.',
+                'message' => 'Property deleted.',
             ]]);
         ;
     }
 
-    public function listImage($id)
-    {
-        $item = Model::with(['media'])->findOrFail($id);
-        return  MediaResource::collection($item->getMedia('images'));
-    }
-
-
-    public function attachImage($id,ImageRequest $request){
-        $image = $request->validated()['file'];
-        $item = Model::findOrFail($id);
-        $item->addMedia($image)->toMediaCollection('images','oss');
-        return new Resource($item);
-    }
 }

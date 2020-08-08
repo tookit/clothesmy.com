@@ -26,9 +26,8 @@ Site: http://www.isocked.com
     <!-- Theme Core CSS -->
     <link href="{{ asset('/css/theme.css')  }}" rel="stylesheet">
     <link href="{{ asset('/external/message/message.css')  }}" rel="stylesheet">
-    <link href="{{ asset('/css/custom.css')  }}" rel="stylesheet">
+    <link href="{{ asset('/css/custom.css').'?v='.now()  }}" rel="stylesheet">
     <link href="https://cdn.bootcdn.net/ajax/libs/Swiper/5.4.5/css/swiper.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css">
     <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 </head>
 
@@ -132,8 +131,6 @@ Assets::add([
     'external/panelmenu/panelmenu.js',
     'external/countdown/jquery.countdown.min.js',
     'external/countdown/jquery.plugin.min.js',
-    'external/rs-plugin/js/jquery.themepunch.tools.min.js',
-    'external/rs-plugin/js/jquery.themepunch.revolution.min.js',
     'external/elevatezoom/jquery.elevatezoom.js',
     'external/magnific-popup/jquery.magnific-popup.min.js',
     'external/lazyLoad/lazyload.min.js',

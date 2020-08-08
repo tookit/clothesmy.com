@@ -27,19 +27,51 @@
                             </div>
                         </div>
                         <div class="tt-collapse open">
-                            <h3 class="tt-collapse-title">PRODUCT CATEGORIES</h3>
+                                <h3 class="tt-collapse-title">PRODUCT CATEGORIES</h3>
+                                <div class="tt-collapse-content">
+                                    <ul class="tt-list-row">
+                                        @foreach($categories as $cat)
+                                        <li class="{{$cat->id == $item->id ? 'active': ''}}"><a href="/product/category/{{ $cat->slug }}">{!! $cat->name !!}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tt-collapse open">
+                            <h3 class="tt-collapse-title">FILTER BY SIZE</h3>
                             <div class="tt-collapse-content">
-                                <ul class="tt-list-row">
-                                    @foreach($categories as $cat)
-                                    <li class="{{$cat->id == $item->id ? 'active': ''}}"><a href="/product/category/{{ $cat->slug }}">{!! $cat->name !!}</a></li>
+                                <ul class="tt-options-swatch options-middle">
+                                    @foreach($filters->where('slug','size')->first()->values as $option)
+                                    <li class="{{request()->get('size') === $option->value ? 'active' : ''}}"><a  href="{{add_query_params(['size'=>$option->value])}}">{{$option->value}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
-                        <div class="tt-content-aside">
-                            <a href="#" class="tt-promo-03">
-                                <img src="{{asset('/images/custom/listing_promo_img_07.jpg')}}" alt="">
-                            </a>
+                        <div class="tt-collapse open">
+                            <h3 class="tt-collapse-title">FILTER BY COLOR</h3>
+                            <div class="tt-collapse-content">
+                                <ul class="tt-options-swatch options-middle">
+                                    @foreach($filters->where('slug','color')->first()->values as $option)
+                                    <li class="{{request()->get('color') === $option->value ? 'active' : ''}}"><a class="options-color tt-border tt-color-{{$option->value}}" href="{{add_query_params(['color'=>$option->value])}}"></a></li>
+                                    @endforeach
+                                    <li><a class="options-color" href="#">
+                                        <span class="swatch-img">
+                                            <img src="images/custom/texture-img-01.jpg" alt="">
+                                        </span>
+                                        <span class="swatch-label color-black"></span>
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tt-collapse open">
+                            <h3 class="tt-collapse-title">Material</h3>
+                            <div class="tt-collapse-content">
+                                <ul class="tt-list-row">
+                                    @foreach($filters->where('slug','material')->first()->values as $option)
+                                    <li class="{{request()->get('size') === $option->value ? 'active' : ''}}"><a  href="{{add_query_params(['size'=>$option->value])}}">{{$option->value}}</a></li>
+                                    @endforeach
+                                </ul>
+                                <!-- <a href="#" class="btn-link-02">+ More</a> -->
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-9 col-xl-9">
@@ -73,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="tt-product-listing row">
-                                @foreach($item->getAllProducts() as $product)
+                                @foreach($item->products as $product)
                                 <div class="col-6 col-md-4 tt-col-item">
                                     <div class="tt-product thumbprod-center">
                                         <div class="tt-image-box">
@@ -81,9 +113,9 @@
                                             <a href="#" data-toggle="modal" data-target="#ModalQuote" class="btn-quote"  data-tposition="left"></a>
                                             <a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
                                             <a href="/product/item/{{ $product->slug }}">
-                                                @if($product->hasMedia('fiber'))
-                                                    <span class="tt-img"><img src="{{asset('/images/loader.svg')}}" data-src="{{ $product->firstMedia('fiber')->getProcessImage('w_278','h_348')  }}" alt="{{$product->name}}"></span>
-                                                    <span class="tt-img-roll-over"><img src="{{asset('/images/loader.svg')}}" data-src="{{ $product->firstMedia('fiber')->getProcessImage('w_278','h_348') }}" alt="{{$product->name}}"></span>
+                                                @if($product->hasMedia('clothes'))
+                                                    <span class="tt-img"><img src="{{asset('/images/loader.svg')}}" data-src="{{ $product->firstMedia('clothes')->getProcessImage('w_278','h_348')  }}" alt="{{$product->name}}"></span>
+                                                    <span class="tt-img-roll-over"><img src="{{asset('/images/loader.svg')}}" data-src="{{ $product->firstMedia('clothes')->getProcessImage('w_278','h_348') }}" alt="{{$product->name}}"></span>
                                                 @else
                                                 <span class="tt-img"><img src="{{asset('/images/loader.svg')}}" data-src="{{asset('/images/product/product-18.jpg')}}" alt="{{$product->name}}"></span>
                                                 <span class="tt-img-roll-over"><img src="{{asset('/images/loader.svg')}}" data-src="{{asset('/images/product/product-18-01.jpg')}}" alt="{{$product->name}}"></span>
@@ -104,7 +136,7 @@
                                                     <i class="icon-star-empty"></i>
                                                 </div>
                                             </div>
-                                            <h2 class="tt-title"><a href="/product/item/{{ $product->slug}}">{{$product->name}}</a></h2>
+                                            <h2 class="tt-title"><a href="/product/item/{{ $product->slug}}">{{ \Illuminate\Support\Str::limit($product->name, 80) }}</a></h2>
                                             <div class="tt-price">
                                             </div>
                                             <div class="tt-product-inside-hover">

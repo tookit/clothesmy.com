@@ -60,6 +60,12 @@ class Product extends Model
     ];
 
 
+
+    public static function findBySlug(string $slug)
+    {
+        return static::where('slug', $slug)->first();
+    }
+
     public function getNameAttribute($val) {
         return htmlspecialchars_decode($val);
     }

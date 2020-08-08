@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Web;
 use App\Models\Mall\Product;
 use App\Models\Mall\Category;
+use App\Models\Mall\Property;
 class ProductController
 {
     public function index(){
@@ -19,9 +20,14 @@ class ProductController
         ]);
     }
     public function view($slug){
-        $item = Product::with(['categories'=>function($query){
-            return $query->withDepth()->orderBy('depth');
-       },'tags'])->where(['slug'=>$slug])->first();
+        $item = Product::findBySlug($slug)->load(
+            [
+                'categories'=> function( $query )  {
+                    return $query->withDepth()->orderBy('depth');
+                },
+            'media', 'meta','tags', 'props','props.property']
+        );
+
         $categories = Category::where(['parent_id'=>null])->get();
             return view('product.item',[
             'categories'=> $categories,
@@ -40,10 +46,12 @@ class ProductController
 
     public function category($slug) {
         $categories = Category::with(['children'])->where(['parent_id'=>null])->get();
-        $item = Category::with(['products','children'])->where(['slug'=>$slug])->first();
+        $item = Category::with(['products','children'])->withCount(['products'])->where(['slug'=>$slug])->first();
+        $filters = Property::with(['values'])->get();
         return view('product.category',[
             'item' => $item,
             'categories'=>$categories,
+            'filters' => $filters,
             'meta' => [
                 'title' =>'',
                 'keywords' =>'',

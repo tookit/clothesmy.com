@@ -837,11 +837,11 @@
 
             $this.on('click', 'li', function(e) {
                 var $this = $(this);
+                console.log('here')
                 $this.addClass('active').siblings().removeClass('active');
                 if(jsChangeImg){
                     addImg($this);
                 };
-                return false;
             });
             if (optionsColorImg.length) {
                 addBg(optionsColorImg);

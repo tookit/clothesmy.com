@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
-
+use Blade;
+use Illuminate\Support\Str;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    public function registerBladeHelper() {
+
+
     }
 
 

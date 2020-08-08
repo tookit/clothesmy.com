@@ -31,7 +31,54 @@ footer .tt-logo img {
     max-height: 550px;
 }
 
+/* Product detail */
+.tt-slick-button-vertical .slick-arrow {
+    background-color: white !important;
+}
 
+.tt-product-vertical-layout .tt-product-single-carousel-vertical .slick-slider:before {
+    background: transparent !important;
+}
+
+
+.tt-input-counter.style-01 .minus-btn:before, .tt-input-counter.style-01 .plus-btn:before {
+    background-color: white !important;
+}
+
+/* color option */
+
+ul.tt-options-swatch li a:not(.options-color):not(.options-color-img) {
+    background-color: #e9e7e7 !important;
+}
+
+.tt-color-black { background-color: black;}
+.tt-color-white { background-color: white;}
+.tt-color-yellow { background-color: yellow;}
+.tt-color-grey { background-color: grey;}
+.tt-color-red { background-color: red;}
+.tt-color-green { background-color: green;}
+.tt-color-purple { background-color: purple;}
+.tt-color-blue { background-color: blue;}
+.tt-color-pink { background-color: pink;}
+
+.tt-item-title {
+    font-size: 18px !important;
+    line-height: 24px !important;
+}
+
+.tt-product-vertical-layout .tt-product-single-carousel-vertical .slick-slider .slick-slide:hover a:before, .tt-product-vertical-layout .tt-product-single-carousel-vertical .slick-slider .slick-slide .zoomGalleryActive:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background:  url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg stroke-width='1.5' stroke='%23000000'%3E%3Cpolyline fill='none' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' points='1,9 5,13 15,3 ' %3E%3C/polyline%3E%3C/g%3E%3C/svg%3E) no-repeat center center;
+    background-size: 1.25em;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+
+}
 
 /* bootstrap table */
 .table {
