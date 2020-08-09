@@ -14,12 +14,7 @@ class NewsController
         return view('news.index', [
             'categories' => $categories,
             'newsCategories'=> $newsCategories,
-            'news' => $news,
-            'meta' => [
-                'title' =>'',
-                'keywords' =>'',
-                'description' =>''
-            ]
+            'news' => $news
 
         ]);
     }
@@ -28,12 +23,7 @@ class NewsController
         $categories = Category::where(['parent_id'=>null])->get();
             return view('news.item',[
             'categories'=> $categories,
-            'item' => $item,
-            'meta' => [
-                'title' =>$item->meta_title,
-                'keywords' =>$item->meta_keywords,
-                'description' =>$item->meta_description
-            ]
+            'item' => $item
         ]);
     }
 
@@ -42,12 +32,7 @@ class NewsController
         $item = Category::with(['products','children'])->where(['slug'=>$slug])->first();
         return view('product.category',[
             'item' => $item,
-            'categories'=>$categories,
-            'meta' => [
-                'title' =>'',
-                'keywords' =>'',
-                'description' =>''
-            ]
+            'categories'=>$categories
         ]);
     }
 }

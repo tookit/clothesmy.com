@@ -11,12 +11,6 @@ class ProductController
         $categories = Category::withCount('products')->where(['parent_id'=>null])->get();
         return view('product.index', [
             'categories' => $categories,
-            'meta' => [
-                'title' =>'',
-                'keywords' =>'',
-                'description' =>''
-            ]
-
         ]);
     }
     public function view($slug){
@@ -31,12 +25,7 @@ class ProductController
         $categories = Category::where(['parent_id'=>null])->get();
             return view('product.item',[
             'categories'=> $categories,
-            'item' => $item,
-            'meta' => [
-                'title' =>$item->meta_title ?? '',
-                'keywords' =>$item->meta_keywords ?? '',
-                'description' =>$item->meta_description ?? ''
-            ]
+            'item' => $item
         ]);
     }
 
@@ -51,12 +40,7 @@ class ProductController
         return view('product.category',[
             'item' => $item,
             'categories'=>$categories,
-            'filters' => $filters,
-            'meta' => [
-                'title' =>'',
-                'keywords' =>'',
-                'description' =>''
-            ]
+            'filters' => $filters
         ]);
     }
 }

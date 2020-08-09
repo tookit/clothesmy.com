@@ -18,24 +18,14 @@ class PageController
         ];
         return view('page.about',[
             'categories' => $categories,
-            'images'=>$images,
-            'meta' => [
-                'title' =>'',
-                'keywords' =>'',
-                'description' =>''
-            ]
+            'images'=>$images
 
         ]);
     }
     public function contact(){
         $categories = Category::where(['parent_id'=>null])->get();
         return view('page.contact',[
-            'categories' => $categories,
-            'meta' => [
-                'title' =>'',
-                'keywords' =>'',
-                'description' =>''
-            ]
+            'categories' => $categories
         ]);
     }
 

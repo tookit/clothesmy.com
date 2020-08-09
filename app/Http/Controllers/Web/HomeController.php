@@ -17,12 +17,7 @@ class HomeController
             'categories' => $categories,
             'fiber' => $fiber,
             'sliders'=>$slider,
-            'promotes' => $promotes,
-            'meta' => [
-                'title' =>'',
-                'keywords' =>'',
-                'description' =>''
-            ]
+            'promotes' => $promotes
         ]);
     }
 }

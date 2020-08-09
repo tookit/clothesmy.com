@@ -14,12 +14,7 @@ class TagController
         $categories = Category::where(['parent_id'=>null])->get();
             return view('tag.item',[
             'categories'=> $categories,
-            'item' => $item,
-            'meta' => [
-                'title' =>$item->name,
-                'keywords' =>$item->name,
-                'description' =>$item->description
-            ]
+            'item' => $item
         ]);
     }
 
