@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "alibabacloud/sdk": "^1.8",
+        "arcanedev/seo-helper": "^3.0",
         "beyondcode/laravel-websockets": "^1.4",
         "box/spout": "^3.1",
         "fruitcake/laravel-cors": "^2.0",

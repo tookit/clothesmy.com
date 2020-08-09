@@ -178,7 +178,8 @@ return [
         Jacobcyl\AliOSS\AliOssServiceProvider::class,
         Michaelwang\Nestedset\NestedSetServiceProvider::class,
         Michaelwang\Mediable\MediableServiceProvider::class,
-        james2doyle\SonicScout\Providers\SonicScoutServiceProvider::class
+        james2doyle\SonicScout\Providers\SonicScoutServiceProvider::class,
+        Arcanedev\SeoHelper\SeoHelperServiceProvider::class
 
     ],
 

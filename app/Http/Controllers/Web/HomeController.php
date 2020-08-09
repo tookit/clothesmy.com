@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Web;
 
 use App\Models\CMS\Slider;
 use App\Models\Mall\Category;
-use App\Models\Mall\Product;
 class HomeController
 {
     public function index(){

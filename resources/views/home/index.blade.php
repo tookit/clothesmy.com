@@ -98,12 +98,12 @@
                         @foreach ($fiber->children->take(4) as $cat)
                         <div class="tab-pane fade {{$loop->index === 1 ? 'active':''}}" id="tt-tab-{{$cat->id}}" role="tabpanel">
                             <div class="tt-carousel-products row arrow-location-tab tt-alignment-img tt-collection-listing slick-animated-show-js">
-                                @foreach( $cat->getAllProducts()->take(4) as $item)
+                                @foreach( $cat->products as $item)
                                 <div class="col-2 col-md-4 col-lg-3">
                                     <a href="{{route('product.view',['slug'=>$item->slug])}}" class="tt-collection-item">
                                         <div class="tt-image-box"><img src="{{$item->getFirstImageUrl()}}" alt="{{$item->name}}"></div>
                                         <div class="tt-description">
-                                            <h2 class="tt-title">{{$item->name}}</h2>
+                                            <h2 class="tt-title">{{ \Illuminate\Support\Str::limit($item->name, 80) }}</h2>
                                             <ul class="tt-add-info">
                                                 <!--<li>22 PRODUCTS</li>-->
                                             </ul>
