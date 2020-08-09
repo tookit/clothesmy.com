@@ -139,8 +139,8 @@ class SyncProduct extends Command
             foreach($skus as $sku)
             {
                 $item->attachSpec(['specs'=>$sku]);
-                die();
             }
         });
+        $this->info('Product Sku generated');
     }
 }

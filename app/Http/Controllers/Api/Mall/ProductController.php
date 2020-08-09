@@ -148,6 +148,12 @@ class ProductController extends Controller
         ;
     }
 
+    public function listSku($id)
+    {
+        $item = Model::with(['specs'])->findOrFail($id);
+        return  Resource::collection($item->specs);
+    }
+
 
     public function search(Request $request) {
         $collection = Model::with(['categories'])->search($request->get('q'))->paginate();

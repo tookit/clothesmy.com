@@ -134,6 +134,7 @@ Route::middleware(['auth:api'])->group(function () {
         Route::post('item/{id}/media',['uses'=>'Mall\ProductController@attachMedia','desc'=>'Attach media for product'])->where('id', '[0-9]+')->name('product.media.attach');
         Route::post('item/{id}/meta',['uses'=>'Mall\ProductController@attachMeta','desc'=>'Attach meta for product'])->where('id', '[0-9]+')->name('product.meta.attach');
         Route::post('item/{id}/property',['uses'=>'Mall\ProductController@attachProps','desc'=>'Attach props for product'])->where('id', '[0-9]+')->name('product.props.attach');
+        Route::get('item/{id}/sku',['uses'=>'Mall\ProductController@listSku','desc'=>'List Sku for product'])->where('id', '[0-9]+')->name('product.sku.list');
 
         //property
         Route::get('property',['uses'=>'Mall\PropertyController@index','desc'=>'List property'])->name('property.index');

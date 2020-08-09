@@ -123,7 +123,7 @@ class Product extends Model
      */
     public function attachSpec($spec)
     {
-        $instance = (is_array($spec)) ? Spec::updateOrCreate(['sku' => md5(json_encode($spec['specs']))], $spec) : $spec;
+        $instance = (is_array($spec)) ? Spec::updateOrCreate(['sku' => md5(json_encode($spec['specs'])), 'product_id' => $this->id], $spec) : $spec;
         $this->specs()->save($instance);
         return $this;
     }
