@@ -36,8 +36,11 @@ class Product extends Model
     ];
 
     protected $fillable = [
-
-        'custom_id','name','description','body', 'applications','features','specs','ordering','reference_url','ali_url','amazon_url','featured_img', 'flag', 'meta_title','meta_keywords', 'meta_description'
+        'custom_id','name','description','body',
+        'applications','features','specs','ordering',
+        'reference_url','ali_url','amazon_url','featured_img',
+        'flag', 'is_active','is_home',
+        'meta_title','meta_keywords', 'meta_description'
     ];
 
     protected $hidden = ['pivot'];

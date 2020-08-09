@@ -48,6 +48,8 @@ class ProductRequest extends FormRequest
         return [
             'name' => ['unique:mall_products,name,'.$this->id],
             'description'=>['string'],
+            'is_active' => ['boolean','nullable'],
+            'is_home' => ['boolean','nullable'],
             'ali_url' => ['url', 'nullable'],
             'specs'=>['string'],
             'flag' => ['numeric'],
