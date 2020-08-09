@@ -136,6 +136,57 @@
                     <div>
                         {!! $item->description !!}
                     </div>
+                    <h3 class="tt-title-border mt-3">Size Info</h3>
+                    <div class="size-table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Kid Szie</th>
+                                    <th>Length(cm)</th>
+                                    <th>Bust(cm)</th>
+                                    <th>Szie</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>3T</td>
+                                    <td>80</td>
+                                    <td>58</td>
+                                    <td>110</td>
+                                </tr>
+                                <tr>
+                                    <td>4T</td>
+                                    <td>85</td>
+                                    <td>60</td>
+                                    <td>120</td>
+                                </tr>
+                                <tr>
+                                    <td>5T</td>
+                                    <td>90</td>
+                                    <td>62</td>
+                                    <td>130</td>
+                                </tr>
+                                <tr>
+                                    <td>6T</td>
+                                    <td>95</td>
+                                    <td>64</td>
+                                    <td>140</td>
+                                </tr>
+                                <tr>
+                                    <td>7T</td>
+                                    <td>100</td>
+                                    <td>66</td>
+                                    <td>150</td>
+                                </tr>
+                                <tr>
+                                    <td>8T</td>
+                                    <td>100</td>
+                                    <td>66</td>
+                                    <td>150</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <h3 class="tt-title-border mt-3">Features</h3>
                     <div style="margin-bottom: 25px">
                         {!! $item->featrue !!}
@@ -145,9 +196,7 @@
                         {!! $item->specs !!}
                     </div>
                     <h3 class="tt-title-border mt-3">Quality Certification</h3>
-                    <div>
-                        Quality and standards are the foundation of <strong>theopticalfiber.com</strong> We are dedicated to providing customers with outstanding, standards-compliant products and services. <strong>theopticalfiber.com</strong> has passed many quality system verifications, like CE, RoHS, FCC, established an internationally standardized quality assurance system and strictly implemented standardized management and control in the course of design, development, production, installation and service.
-                    </div>
+
                 </div>
             </div>
         </div>

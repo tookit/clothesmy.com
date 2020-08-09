@@ -32,7 +32,7 @@ return [
 
     'keywords'  => [
         'default'   => [
-            //
+            'Princess dress','costume dress','girls dress','baby dress'
         ],
     ],
 
@@ -73,9 +73,9 @@ return [
         'enabled'     => true,
         'prefix'      => 'og:',
         'type'        => 'website',
-        'title'       => 'Default Open Graph title',
-        'description' => 'Default Open Graph description',
-        'site-name'   => '',
+        'title'       => 'Awesome constume cartoon princess dresss store',
+        'description' => 'Awesome constume cartoon princess dresss store',
+        'site-name'   => 'Clothesmy',
         'properties'  => [
             //
         ],
@@ -91,8 +91,8 @@ return [
         'enabled' => true,
         'prefix'  => 'twitter:',
         'card'    => 'summary',
-        'site'    => 'Username',
-        'title'   => 'Default Twitter Card title',
+        'site'    => 'Clothesmy.com',
+        'title'   => 'Awesome constume cartoon princess dresss store',
         'metas'   => [
             //
         ],

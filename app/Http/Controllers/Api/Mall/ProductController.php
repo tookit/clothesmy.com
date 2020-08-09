@@ -31,7 +31,7 @@ class ProductController extends Controller
             }])
             ->allowedFilters([
                 AllowedFilter::exact('is_active'),
-                AllowedFilter::exact('name'),
+                'name',
                 AllowedFilter::exact('categories.id'),
                 AllowedFilter::scope('imaged', 'hasImage'),
                 ])

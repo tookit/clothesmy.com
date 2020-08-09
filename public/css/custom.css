@@ -87,6 +87,46 @@ ul.tt-options-swatch li.active a:not(.options-color):not(.options-color-img), ul
 .btn-ali {
     background-color: red !important;
 }
+
+/* size table info */
+
+
+.size-table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  .size-table-wrapper th, .size-table-wrapper td {
+    padding: 15px;
+    background-color: rgba(0, 123, 255 0.2);
+  }
+  .size-table-wrapper th {
+    text-align: left;
+    color: #fff;
+
+  }
+  .size-table-wrapper thead th {
+    background-color: rgba(0, 123, 255);
+  }
+  .size-table-wrapper tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.3);
+  }
+  .size-table-wrapper tbody td {
+    position: relative;
+  }
+  .size-table-wrapper tbody td:hover:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -9999px;
+    bottom: -9999px;
+    background-color: rgba(0, 123, 255, 0.2);
+    z-index: -1;
+  }
+
+
 /* bootstrap table */
 .table {
 	width: 100%;

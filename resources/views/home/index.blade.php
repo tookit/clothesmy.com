@@ -88,15 +88,15 @@
                 <div class="tt-tab-wrapper">
                     @if($fiber)
                     <ul class="nav nav-tabs tt-tabs-default" role="tablist">
-                        @foreach ($fiber->children->take(4) as $item)
+                        @foreach ($fiber->children->take(4) as $index => $item)
                             <li class="nav-item">
-                                <a class="nav-link show" data-toggle="tab" href="#tt-tab-{{$item->id}}" role="tab">{{$item->name}}</a>
+                                <a class="nav-link show {{$index === 0 ? 'active':''}}" data-toggle="tab" href="#tt-tab-{{$item->id}}" role="tab">{{$item->name}}</a>
                             </li>
                         @endforeach
                     </ul>
                     <div class="tab-content">
-                        @foreach ($fiber->children->take(4) as $cat)
-                        <div class="tab-pane fade {{$loop->index === 1 ? 'active':''}}" id="tt-tab-{{$cat->id}}" role="tabpanel">
+                        @foreach ($fiber->children->take(4) as $index => $cat)
+                        <div class="tab-pane fade {{$index === 0 ? 'active':''}}" id="tt-tab-{{$cat->id}}" role="tabpanel">
                             <div class="tt-carousel-products row arrow-location-tab tt-alignment-img tt-collection-listing slick-animated-show-js">
                                 @foreach( $cat->products as $item)
                                 <div class="col-2 col-md-4 col-lg-3">
