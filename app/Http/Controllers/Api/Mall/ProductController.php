@@ -154,6 +154,17 @@ class ProductController extends Controller
         return  Resource::collection($item->specs);
     }
 
+    public function attachSku($id,Request $request){
+        $item = Model::findOrFail($id);
+        $item->attachSpec($request->all());
+        return (new Resource($item))
+            ->additional(['meta' => [
+                'message' => 'Sku attached',
+            ]]);
+        ;
+    }
+
+
 
     public function search(Request $request) {
         $collection = Model::with(['categories'])->search($request->get('q'))->paginate();
