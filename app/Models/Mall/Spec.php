@@ -2,9 +2,12 @@
 
 namespace App\Models\Mall;
 
+use App\Traits\HasSku;
 use Illuminate\Database\Eloquent\Model;
 class Spec extends Model
 {
+
+    use HasSku;
 
     protected $table = 'product_specs';
 
@@ -17,6 +20,11 @@ class Spec extends Model
     protected $guarded = [
 
     ];
+
+    protected $casts = [
+        'specs' => 'array'
+    ];
+
 
 
 

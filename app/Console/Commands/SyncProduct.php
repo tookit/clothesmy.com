@@ -4,11 +4,12 @@ namespace App\Console\Commands;
 
 use App\Models\Mall\Category;
 use App\Models\Mall\Property;
+use App\Models\Mall\Spec;
 use Illuminate\Console\Command;
 use App\Models\Mall\Product;
 use Illuminate\Support\Facades\File;
 use App\Lib\CartesianIterator;
-
+use Illuminate\Support\Facades\Hash;
 class SyncProduct extends Command
 {
     /**
@@ -133,6 +134,13 @@ class SyncProduct extends Command
         // The second argument controls the key of the corresponding value in the product array.
         // $cartesianIterator->attachIterator(new \ArrayIterator(['white','black']), 'color');
         // $cartesianIterator->attachIterator(new \ArrayIterator(['3T','4T']), 'size');
-        $result = iterator_to_array($cartesianIterator);
+        $skus = iterator_to_array($cartesianIterator);
+        Product::all()->each(function ($item) use($skus){
+            foreach($skus as $sku)
+            {
+                $item->attachSpec(['specs'=>$sku]);
+                die();
+            }
+        });
     }
 }

@@ -116,6 +116,19 @@ class Product extends Model
     }
 
 
+    /**
+     * @param array|\ArrayAccess|\App\Models\Mall\Spec $spec
+     *
+     * @return $this
+     */
+    public function attachSpec($spec)
+    {
+        $instance = (is_array($spec)) ? Spec::updateOrCreate(['sku' => md5(json_encode($spec['specs']))], $spec) : $spec;
+        $this->specs()->save($instance);
+        return $this;
+    }
+
+
 
     public function includeMedia($media)
     {
@@ -181,9 +194,6 @@ class Product extends Model
     }
 
 
-    public function getCategoriesWithSelf()
-    {
 
-    }
 
 }

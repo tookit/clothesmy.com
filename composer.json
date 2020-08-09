@@ -73,7 +73,8 @@
         "psr-4": {
             "Tests\\": "tests/",
             "Michaelwang\\Nestedset\\": "packages/michaelwang/Nestedset/src",
-            "Michaelwang\\Mediable\\": "packages/michaelwang/Mediable/src"
+            "Michaelwang\\Mediable\\": "packages/michaelwang/Mediable/src",
+            "Michaelwang\\Sku\\": "packages/michaelwang/Sku/src"
         }
     },
     "minimum-stability": "dev",
