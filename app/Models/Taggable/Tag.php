@@ -113,7 +113,6 @@ class Tag extends Model implements Sortable
 
     protected static function findOrCreateFromString(string $name, string $type = null, string $locale = null)
     {
-
         $tag = static::findFromString($name, $type, $locale);
 
         if (! $tag) {

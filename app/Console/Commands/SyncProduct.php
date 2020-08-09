@@ -7,6 +7,7 @@ use App\Models\Mall\Property;
 use Illuminate\Console\Command;
 use App\Models\Mall\Product;
 use Illuminate\Support\Facades\File;
+use App\Lib\CartesianIterator;
 
 class SyncProduct extends Command
 {
@@ -60,6 +61,10 @@ class SyncProduct extends Command
             case 'prop':
                 # code...
                 $this->syncProps();
+                break;
+            case 'spec':
+                # code...
+                $this->syncSpec();
                 break;
             default:
                 # code...
@@ -116,4 +121,18 @@ class SyncProduct extends Command
         });
     }
 
+
+    public function syncSpec() {
+
+        $cartesianIterator = new CartesianIterator();
+        $props = Property::with(['values'])->ofType('sku')->get();
+        $props->each(function($prop) use($cartesianIterator) {
+            $values = $prop->values->pluck('value')->toArray();
+            $cartesianIterator->attachIterator(new \ArrayIterator($values), $prop->name);
+        });
+        // The second argument controls the key of the corresponding value in the product array.
+        // $cartesianIterator->attachIterator(new \ArrayIterator(['white','black']), 'color');
+        // $cartesianIterator->attachIterator(new \ArrayIterator(['3T','4T']), 'size');
+        $result = iterator_to_array($cartesianIterator);
+    }
 }

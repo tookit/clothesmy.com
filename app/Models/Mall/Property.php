@@ -45,6 +45,19 @@ class Property extends Model
 
 
 
+     /**
+     * Scope a query to only include props of a given type.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  mixed  $type
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfType($query, $type)
+    {
+        return $query->where('type', $type);
+    }
+
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

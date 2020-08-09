@@ -92,7 +92,7 @@ class PropertyController extends Controller
         $item->values()->save($value);
         return (new Resource($item))
             ->additional(['meta' => [
-                'message' => 'Property value updated',
+                'message' => 'Property value attached',
             ]]);
         ;
     }

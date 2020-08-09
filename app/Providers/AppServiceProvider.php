@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Blade;
 use Illuminate\Support\Str;
+use App\Models\Mall\PropertyValue;
+use App\Observers\PropertyValueObserver;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -16,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        // PropertyValue::observe(PropertyValueObserver::class);
         DB::connection()->enableQueryLog();
     }
 

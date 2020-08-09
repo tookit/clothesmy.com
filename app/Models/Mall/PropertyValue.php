@@ -39,10 +39,22 @@ class PropertyValue extends Model
     public $appends = [
 
         'property_name',
-        'property_slug'
+        'property_slug',
+        'property_type'
 
     ];
 
+    protected static function booted()
+    {
+        static::created(function ($model) {
+            //
+        });
+    }
+
+    public function getPropertyTypeAttribute()
+    {
+        return $this->property ? $this->property->type : null;
+    }
 
 
     public function getPropertyNameAttribute()
@@ -54,6 +66,8 @@ class PropertyValue extends Model
     {
         return $this->property ? $this->property->slug : null;
     }
+
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

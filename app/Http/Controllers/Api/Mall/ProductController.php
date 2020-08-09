@@ -75,7 +75,7 @@ class ProductController extends Controller
     {
         $item = Model::with(['categories'=>function($query){
              return $query->withDepth()->orderBy('depth');
-        },'media', 'meta','tags', 'props','props.property'])->findOrFail($id);
+        },'media', 'meta','tags', 'props','props.property','specs'])->findOrFail($id);
         return new Resource($item);
     }
 
@@ -93,7 +93,7 @@ class ProductController extends Controller
             $item->categories()->sync($request->get('categories'));
         }
         if($request->get('tags')) {
-            $item->syncTagsWithType($request->get('tags'),'fiber');
+            $item->syncTagsWithType($request->get('tags'),'item');
         }
         return (new Resource($item))
                 ->additional(['meta' => [

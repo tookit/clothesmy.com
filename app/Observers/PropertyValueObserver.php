@@ -3,6 +3,9 @@ namespace App\Observers;
 
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Mall\PropertyValue;
+use App\Models\Mall\Property;
+use App\Models\Mall\Spec;
 
 class PropertyValueObserver
 {
@@ -11,33 +14,19 @@ class PropertyValueObserver
      *
      * @param Model $model
      */
-    public function creating(Model $model)
+    public function updated(PropertyValue $model)
     {
-        if (! $model->created_by) {
-            $model->created_by = $this->getAuthenticatedUserId();
-        }
-        if (! $model->updated_by) {
-            $model->updated_by = $this->getAuthenticatedUserId();
-        }
-    }
-    /**
-     * Get authenticated user id depending on model's auth guard.
-     *
-     * @return int
-     */
-    protected function getAuthenticatedUserId()
-    {
-        return auth()->check() ? auth()->id() : 0;
-    }
-    /**
-     * Model's updating event hook.
-     *
-     * @param Model $model
-     */
-    public function updating(Model $model)
-    {
-        if (! $model->isDirty('updated_by')) {
-            $model->updated_by = $this->getAuthenticatedUserId();
+
+        //  add sku
+        if($model->property_type === 'sku') {
+            $props = Property::ofType('sku')->where('id','!=',$model->id)->get();
+            $props->each(function($prop){
+                $propertyName = $prop->name;
+                $prop->values->each(function($value) use($propertyName){
+                    // attach sku to proudct
+                });
+            });
         }
     }
+
 }
