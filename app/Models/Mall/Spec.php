@@ -13,7 +13,7 @@ class Spec extends Model
 
     protected $fillable = [
 
-        'specs','price','stock'
+        'specs','price','stock','img'
     ];
 
 
